@@ -9,7 +9,7 @@ import SearchBox from './SearchBox';
 
 class App extends Component {
     constructor() {
-        super();
+        super()
         this.state = {
             robots: robots,
             searchfield: ''
@@ -17,8 +17,13 @@ class App extends Component {
         }
     }
 
-    onSearchChange(event){
+    onSearchChange=(event) => {
+        this.setState({searchfield: event.target.value})
         console.log(event.target.value);
+        const filterRobots = this.state.robots.filter(robots => {
+            return robots.name.toLowerCase().includes(this.state.searchfield.toLowerCase());
+        })
+        
     }
 
 
